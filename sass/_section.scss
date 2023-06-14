@@ -10,8 +10,11 @@ main {
       
       #totalRecettes{
         font-family: 'Anton';
-        font-size: 25px;
+        font-size: 30px;
         align-self: center;
+        position: absolute;
+        right: 0;
+        top: 7px;
       }
     }
         .filter
