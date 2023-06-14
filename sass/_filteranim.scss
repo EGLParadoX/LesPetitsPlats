@@ -1,0 +1,19 @@
+.filter {
+    z-index: 1;
+    i 
+    {
+        transition: transform 0.5s;
+    }
+    &-bar {
+        height: 67px;
+        transition: height 0.5s;
+  
+      &.clicked {
+        height: 380px; 
+
+        .fa-chevron-down {
+            transform: rotate(-180deg);
+        }
+      }
+    }
+  }

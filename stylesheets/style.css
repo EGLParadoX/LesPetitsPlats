@@ -1,0 +1,295 @@
+/* line 1, ../sass/_header.scss */
+body {
+  margin: 0;
+  background: #EDEDED;
+}
+
+/* line 8, ../sass/_header.scss */
+h1, h2, h3 {
+  font-family: 'Anton';
+  margin: 0;
+}
+
+/* line 13, ../sass/_header.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 17, ../sass/_header.scss */
+h1 {
+  color: #FFD15B;
+  font-size: 54px;
+  width: 45%;
+  text-align: center;
+}
+
+/* line 24, ../sass/_header.scss */
+header {
+  position: relative;
+}
+
+/* line 27, ../sass/_header.scss */
+.header-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 32, ../sass/_header.scss */
+.header-image {
+  width: 100%;
+}
+
+/* line 36, ../sass/_header.scss */
+.title-and-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+}
+/* line 44, ../sass/_header.scss */
+.title-and-input input {
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  outline: none;
+  color: #000000;
+  font-size: 25px;
+  padding-left: 40px;
+  border: none;
+}
+/* line 55, ../sass/_header.scss */
+.title-and-input i {
+  color: white;
+  background-color: #1B1B1B;
+  position: absolute;
+  font-size: 30px;
+  padding: 17px;
+  border-radius: 10px;
+  right: 15px;
+  transition: all 0.3s;
+}
+/* line 66, ../sass/_header.scss */
+.title-and-input i:hover {
+  background-color: #FFD15B;
+  cursor: pointer;
+  color: black;
+}
+
+/* line 75, ../sass/_header.scss */
+nav {
+  margin: 40px 60px;
+}
+
+/* line 79, ../sass/_header.scss */
+a {
+  text-decoration: none;
+  font-family: 'Anton';
+  color: white;
+  font-size: 35px;
+  position: absolute;
+}
+
+/* line 88, ../sass/_header.scss */
+.card-title {
+  font-family: 'Anton';
+}
+
+/* line 92, ../sass/_header.scss */
+p, li, input {
+  font-family: 'Manrope';
+}
+
+/* line 96, ../sass/_header.scss */
+.input-logo {
+  width: 65%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: 50px;
+}
+
+/* line 1, ../sass/_section.scss */
+main {
+  margin: 30px 120px;
+  position: relative;
+}
+/* line 5, ../sass/_section.scss */
+main .total-filter {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+}
+/* line 11, ../sass/_section.scss */
+main .total-filter #totalRecettes {
+  font-family: 'Anton';
+  font-size: 25px;
+  align-self: center;
+}
+/* line 17, ../sass/_section.scss */
+main .filter {
+  display: flex;
+}
+/* line 20, ../sass/_section.scss */
+main .filter-bar {
+  background-color: white;
+  width: 265px;
+  margin-right: 50px;
+  border-radius: 15px;
+  box-shadow: rgba(236, 239, 241, 0.14) 0px 8px 24px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+/* line 32, ../sass/_section.scss */
+main .filter-name {
+  font-size: 20px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* line 40, ../sass/_section.scss */
+main .filter ul {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+/* line 46, ../sass/_section.scss */
+main .filter ul li {
+  padding: 10px 20px 10px 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+/* line 51, ../sass/_section.scss */
+main .filter ul li:hover {
+  background-color: #FFD15B;
+}
+/* line 56, ../sass/_section.scss */
+main .filter-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 20px;
+}
+/* line 63, ../sass/_section.scss */
+main .filter-container .filter-search {
+  border: 1px solid #C6C6C6;
+  outline: none;
+  padding: 12px;
+  position: relative;
+  width: 100%;
+}
+/* line 71, ../sass/_section.scss */
+main .filter-container .fa-magnifying-glass {
+  position: absolute;
+  right: 30px;
+  color: #C6C6C6;
+}
+
+/* line 85, ../sass/_section.scss */
+#recipeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 120px;
+  justify-content: space-between;
+}
+/* line 91, ../sass/_section.scss */
+#recipeContainer .time {
+  font-family: 'Manrope';
+  font-size: 20px;
+  padding: 7px 20px;
+  border-radius: 20px;
+  background-color: #FFD15B;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+/* line 102, ../sass/_section.scss */
+#recipeContainer .card {
+  flex-basis: calc(33.33% - 40px);
+  margin-bottom: 40px;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+/* line 110, ../sass/_section.scss */
+#recipeContainer .card img {
+  border-radius: 20px 20px 0px 0px;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+/* line 118, ../sass/_section.scss */
+#recipeContainer .card-container {
+  padding: 30px;
+}
+/* line 121, ../sass/_section.scss */
+#recipeContainer .card-container h3 {
+  font-size: 25px;
+  margin-top: 10px;
+}
+/* line 127, ../sass/_section.scss */
+#recipeContainer .card-container h4 {
+  font-size: 20px;
+  color: #7A7A7A;
+  font-family: "Manrope";
+  margin-top: 20px;
+}
+/* line 135, ../sass/_section.scss */
+#recipeContainer .card-container p {
+  font-size: 21.7px;
+  overflow: hidden;
+  height: 120px;
+}
+/* line 141, ../sass/_section.scss */
+#recipeContainer .card-container h4 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+/* line 146, ../sass/_section.scss */
+#recipeContainer .card-container ul {
+  margin-top: 5px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+/* line 153, ../sass/_section.scss */
+#recipeContainer .card-container ul li {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  width: 50%;
+}
+/* line 160, ../sass/_section.scss */
+#recipeContainer .card-container ul .quantity {
+  color: #7A7A7A;
+}
+
+/* line 1, ../sass/_filteranim.scss */
+.filter {
+  z-index: 1;
+}
+/* line 3, ../sass/_filteranim.scss */
+.filter i {
+  transition: transform 0.5s;
+}
+/* line 7, ../sass/_filteranim.scss */
+.filter-bar {
+  height: 67px;
+  transition: height 0.5s;
+}
+/* line 11, ../sass/_filteranim.scss */
+.filter-bar.clicked {
+  height: 380px;
+}
+/* line 14, ../sass/_filteranim.scss */
+.filter-bar.clicked .fa-chevron-down {
+  transform: rotate(-180deg);
+}

@@ -1,0 +1,102 @@
+body 
+{
+    margin: 0;
+    background: #EDEDED;
+
+}
+
+h1, h2, h3 {
+    font-family: 'Anton';
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1 {
+    color: #FFD15B;
+    font-size: 54px;
+    width: 45%;
+    text-align: center;
+
+}
+header {
+    position:relative;
+}
+.header-content
+{position: absolute;
+    width: 100%;
+height: 100%;}
+
+.header-image {
+    width: 100%;
+}
+
+.title-and-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+
+    input {
+        width: 100%;
+        height: 80px;
+        border-radius: 10px;
+        outline: none;
+        color: #000000;
+        font-size: 25px;
+        padding-left: 40px;
+        border: none;
+    }
+
+    i
+{
+    color: white;
+    background-color: #1B1B1B;
+    position: absolute;
+    font-size: 30px;
+    padding: 17px;
+    border-radius: 10px;
+    right: 15px;
+    transition: all 0.3s;
+
+    &:hover
+    {
+        background-color: #FFD15B;
+        cursor: pointer;
+        color: black;
+    }
+    }
+}
+
+nav {
+    margin: 40px 60px;
+}
+
+a 
+{
+    text-decoration: none;
+    font-family: 'Anton';
+    color: white;
+    font-size: 35px;
+    position: absolute;
+}
+
+.card-title {
+    font-family: 'Anton';
+}
+
+p, li , input {
+    font-family: 'Manrope';
+}
+
+.input-logo {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    position: relative;
+padding-top: 50px;}
+
