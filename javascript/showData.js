@@ -17,7 +17,7 @@ recipes.forEach(recipe => {
   
 
   const recipeContent = `
-    <img src="../images/Photo/${recipe.image}" alt="${recipe.name}" />
+    <img src="images/Photo/${recipe.image}" alt="${recipe.name}" />
     <div class="card-container">
     <div class="time">${recipe.time}min</div>
     
