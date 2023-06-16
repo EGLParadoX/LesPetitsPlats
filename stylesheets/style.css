@@ -166,20 +166,22 @@ main .filter ul {
 main .filter ul li {
   padding: 10px 20px 10px 20px;
   transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
 }
-/* line 54, ../sass/_section.scss */
+/* line 56, ../sass/_section.scss */
 main .filter ul li:hover {
   background-color: #FFD15B;
 }
-/* line 59, ../sass/_section.scss */
+/* line 61, ../sass/_section.scss */
 main .filter-container {
   display: flex;
   align-items: center;
   position: relative;
   padding: 0 20px;
 }
-/* line 66, ../sass/_section.scss */
+/* line 68, ../sass/_section.scss */
 main .filter-container .filter-search {
   border: 1px solid #C6C6C6;
   outline: none;
@@ -187,21 +189,21 @@ main .filter-container .filter-search {
   position: relative;
   width: 100%;
 }
-/* line 74, ../sass/_section.scss */
+/* line 76, ../sass/_section.scss */
 main .filter-container .fa-magnifying-glass {
   position: absolute;
   right: 30px;
   color: #C6C6C6;
 }
 
-/* line 88, ../sass/_section.scss */
+/* line 90, ../sass/_section.scss */
 #recipeContainer {
   display: flex;
   flex-wrap: wrap;
   padding-top: 120px;
   justify-content: space-between;
 }
-/* line 94, ../sass/_section.scss */
+/* line 96, ../sass/_section.scss */
 #recipeContainer .time {
   font-family: 'Manrope';
   font-size: 20px;
@@ -212,7 +214,7 @@ main .filter-container .fa-magnifying-glass {
   top: 20px;
   right: 20px;
 }
-/* line 105, ../sass/_section.scss */
+/* line 107, ../sass/_section.scss */
 #recipeContainer .card {
   flex-basis: calc(33.33% - 40px);
   margin-bottom: 40px;
@@ -221,41 +223,41 @@ main .filter-container .fa-magnifying-glass {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
 }
-/* line 113, ../sass/_section.scss */
+/* line 115, ../sass/_section.scss */
 #recipeContainer .card img {
   border-radius: 20px 20px 0px 0px;
   width: 100%;
   height: 350px;
   object-fit: cover;
 }
-/* line 121, ../sass/_section.scss */
+/* line 123, ../sass/_section.scss */
 #recipeContainer .card-container {
   padding: 30px;
 }
-/* line 124, ../sass/_section.scss */
+/* line 126, ../sass/_section.scss */
 #recipeContainer .card-container h3 {
   font-size: 25px;
   margin-top: 10px;
 }
-/* line 130, ../sass/_section.scss */
+/* line 132, ../sass/_section.scss */
 #recipeContainer .card-container h4 {
   font-size: 20px;
   color: #7A7A7A;
   font-family: "Manrope";
   margin-top: 20px;
 }
-/* line 138, ../sass/_section.scss */
+/* line 140, ../sass/_section.scss */
 #recipeContainer .card-container p {
   font-size: 21.7px;
   overflow: hidden;
   height: 120px;
 }
-/* line 144, ../sass/_section.scss */
+/* line 146, ../sass/_section.scss */
 #recipeContainer .card-container h4 {
   font-size: 16px;
   margin-top: 10px;
 }
-/* line 149, ../sass/_section.scss */
+/* line 151, ../sass/_section.scss */
 #recipeContainer .card-container ul {
   margin-top: 5px;
   padding-left: 20px;
@@ -263,14 +265,14 @@ main .filter-container .fa-magnifying-glass {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-/* line 156, ../sass/_section.scss */
+/* line 158, ../sass/_section.scss */
 #recipeContainer .card-container ul li {
   font-size: 18px;
   margin-bottom: 10px;
   padding-bottom: 10px;
   width: 50%;
 }
-/* line 163, ../sass/_section.scss */
+/* line 165, ../sass/_section.scss */
 #recipeContainer .card-container ul .quantity {
   color: #7A7A7A;
 }
