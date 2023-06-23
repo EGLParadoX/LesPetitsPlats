@@ -1,43 +1,49 @@
 import { recipes } from '../data/recipes.js'
 
-const recipeContainer = document.getElementById('recipeContainer');
 
-recipes.forEach(recipe => {
-  const recipeCard = document.createElement('div');
-  recipeCard.classList.add('card'); 
 
-  const ingredientsList = recipe.ingredients.map(ingredient => {
-    const quantity = ingredient.quantity ? `<span class="quantity">${ingredient.quantity} ${ingredient.unit || ''}</span>` : '';
-    return `<li>${ingredient.ingredient} <br> ${quantity}</li>`;
-  }).join('');
+function createRecipeCards(recipes) {
+  const recipeContainer = document.getElementById('recipeContainer');
 
-  const recipeCountElement = document.getElementById('totalRecettes');
-  const recipeCount = recipes.length;
-  recipeCountElement.textContent = `${recipeCount} recettes`;
-  
+  recipeContainer.innerHTML = '';
 
-  const recipeContent = `
-    <img src="images/Photo/${recipe.image}" alt="${recipe.name}" />
-    <div class="card-container">
-    <div class="time">${recipe.time}min</div>
-    
-    <h3>${recipe.name}</h3>
+  recipes.forEach(recipe => {
+    const recipeCard = document.createElement('div');
+    recipeCard.classList.add('card');
 
-    <h4>RECETTE</h4>
+    const ingredientsList = recipe.ingredients.map(ingredient => {
+      const quantity = ingredient.quantity ? `<span class="quantity">${ingredient.quantity} ${ingredient.unit || ''}</span>` : '';
+      return `<li>${ingredient.ingredient} <br> ${quantity}</li>`;
+    }).join('');
 
-    <p>${recipe.description}.</p>
+    const recipeCountElement = document.getElementById('totalRecettes');
+    const recipeCount = recipes.length;
+    recipeCountElement.textContent = `${recipeCount} recettes`;
 
-    <h4>INGREDIENTS</h4>
+    const recipeContent = `
+      <img src="images/Photo/${recipe.image}" alt="${recipe.name}" />
+      <div class="card-container">
+        <div class="time">${recipe.time}min</div>
+        
+        <h3>${recipe.name}</h3>
 
-    <ul>${ingredientsList}</ul>
+        <h4>RECETTE</h4>
 
-    </div>
-  `;
+        <p>${recipe.description}.</p>
 
-  recipeCard.innerHTML = recipeContent;
+        <h4>INGREDIENTS</h4>
 
-  recipeContainer.appendChild(recipeCard);
-});
+        <ul>${ingredientsList}</ul>
+
+      </div>
+    `;
+
+    recipeCard.innerHTML = recipeContent;
+
+    recipeContainer.appendChild(recipeCard);
+  });
+}
+
 
 
 function showDataFilter() {
@@ -92,4 +98,5 @@ function showDataFilter() {
 
 
 showDataFilter();
+createRecipeCards(recipes);
 

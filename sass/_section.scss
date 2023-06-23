@@ -1,5 +1,5 @@
 main {
-    margin: 30px 120px;
+    margin: 50px 120px;
     position: relative;
     
     .total-filter{
@@ -50,6 +50,7 @@ main {
                 padding: 10px 20px 10px 20px;
                 transition: all 0.2s; 
                 display: flex;
+                align-items: center;
                 justify-content: space-between;
                 cursor: pointer;
 
@@ -77,6 +78,12 @@ main {
             position: absolute;
             right: 30px;
             color: #C6C6C6;
+            transition: color 0.3s;
+            
+            &:hover
+            {
+              color: black;
+            }
           }
 
         }
@@ -86,11 +93,32 @@ main {
 
 }
 
+.all-selected-filter {
+  ul 
+  {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 120px;
+
+    li {
+      background-color: #FFD15B;
+      width: 265px;
+      border-radius: 15px;
+      font-size: 20px;
+      padding: 20px 30px;
+      margin: 10px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
 
 #recipeContainer {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 120px;
+    padding-top: 20px;
     justify-content: space-between;
 
     .time {
