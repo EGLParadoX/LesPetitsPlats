@@ -2,8 +2,9 @@ import { recipes } from '../data/recipes.js'
 
 
 
-function createRecipeCards(recipes) {
+export function createRecipeCards(recipes) {
   const recipeContainer = document.getElementById('recipeContainer');
+  console.log("passage")
 
   recipeContainer.innerHTML = '';
 

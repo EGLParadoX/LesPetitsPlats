@@ -1,3 +1,5 @@
+import { filteredRecipes } from "./filter.js"
+
 function removeSelectedFilter(li) {
   const selectedFilterList = document.querySelector(".all-selected-filter ul");
   const selectedTextElements = selectedFilterList.getElementsByTagName("li");
@@ -22,6 +24,7 @@ function crossIconClick(event) {
   li.addEventListener("click", itemClicked);
 
   removeSelectedFilter(li);
+  filteredRecipes();
 }
 
 function addSelectedFilter(liText) {
@@ -41,6 +44,8 @@ function addSelectedFilter(liText) {
   selectedFilterContainer.classList.add("animation");
 
   crossIcon.addEventListener("click", crossIconClick);
+
+  filteredRecipes();
 }
 
 function itemClicked(event) {

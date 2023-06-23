@@ -13,99 +13,100 @@
       href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stylesheets/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Les Petits Plats</title>
   </head>
   <body>
     <header>
-        <div class="header-content">
-            <nav>
-                <a href="#">LES PETITS PLATS</a>
-              </nav>
-        
-              <div class="title-and-input">
-                <h1 class="search-title">
-                    CHERCHEZ PARMI PLUS DE 1500 RECETTES 
-                    DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
-                </h1>
-        
-                <div class="input-logo">
-                    <input type="text" class="search" placeholder="Rechercher une recette, un ingrédient, ...">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-              </div>
-        </div>
+      <div class="header-content">
+        <nav>
+          <a href="#">LES PETITS PLATS</a>
+        </nav>
 
-      <img class="header-image" src="images/headerFont.png" alt="">
+        <div class="title-and-input">
+          <h1 class="search-title">
+            CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET
+            DÉLICIEUSES
+          </h1>
+
+          <div class="input-logo">
+            <input
+              type="text"
+              class="search"
+              placeholder="Rechercher une recette, un ingrédient, ..."
+            />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+      </div>
+
+      <img class="header-image" src="images/headerFont.png" alt="" />
     </header>
 
     <main>
       <div class="total-filter">
-            <div class="filter">
-                <div class="filter-bar" >
-                    <div class="filter-name" onclick="toggleFilter(this)">
-                        <p>Ingrédients</p>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </div>
-
-                    <div class="filter-container">
-                      <input type="text" class="filter-search">
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-
-                    <ul class="ingredientsList"></ul>
-                </div>
-
-                <div class="filter-bar" >
-                  <div class="filter-name" onclick="toggleFilter(this)">
-                      <p>Appareils</p>
-                      <i class="fa-solid fa-chevron-down"></i>
-                  </div>
-                  <div class="filter-container">
-                    <input type="text" class="filter-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </div>
-
-                  <ul class="appareilsList"></ul>
-              </div>
-
-              <div class="filter-bar">
-                <div class="filter-name" onclick="toggleFilter(this)">
-                    <p>Ustensiles</p>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="filter-container">
-                  <input type="text" class="filter-search">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-
-                <ul class="ustensilesList"></ul>
-            </div>
+        <div class="filter">
+          <div class="filter-bar">
+            <div class="filter-name" onclick="toggleFilter(this)">
+              <p>Ingrédients</p>
+              <i class="fa-solid fa-chevron-down"></i>
             </div>
 
-            <div id="totalRecettes"></div>
+            <div class="filter-container">
+              <input type="text" class="filter-search" />
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <ul class="ingredientsList"></ul>
           </div>
 
-          <div class="all-selected-filter">
-            <ul>
-              
-            </ul>
+          <div class="filter-bar">
+            <div class="filter-name" onclick="toggleFilter(this)">
+              <p>Appareils</p>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="filter-container">
+              <input type="text" class="filter-search" />
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <ul class="appareilsList"></ul>
           </div>
 
-            <section id="recipeContainer">
+          <div class="filter-bar">
+            <div class="filter-name" onclick="toggleFilter(this)">
+              <p>Ustensiles</p>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="filter-container">
+              <input type="text" class="filter-search" />
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
 
+            <ul class="ustensilesList"></ul>
+          </div>
+        </div>
 
-            </section>
+        <div id="totalRecettes"></div>
+      </div>
+
+      <div class="all-selected-filter">
+        <ul></ul>
+      </div>
+
+      <section id="recipeContainer"></section>
     </main>
 
     <script src="data/recipes.js" type="module"></script>
+    <script src="javascript/filter.js" type="module"></script>
     <script src="javascript/showData.js" type="module"></script>
     <script src="javascript/filterAnimation.js"></script>
-    <script src="javascript/selectedFilterAnim.js"></script>
+    <script src="javascript/selectedFilterAnim.js" type="module"></script>
     <script src="javascript/search.js"></script>
-
   </body>
-
 </html>
