@@ -1,3 +1,6 @@
+import { createRecipeCards } from "./showData.js";
+import { recipes } from '../data/recipes.js'
+
 function searchFilter(event) {
   const searchInput = event.target;
   const filterValue = searchInput.value.toLowerCase();
@@ -39,3 +42,44 @@ const searchInputs = document.querySelectorAll('.filter-search');
 searchInputs.forEach(searchInput => {
   searchInput.addEventListener('input', searchFilter);
 });
+
+
+function searchFilterMain(event) {
+  const searchInput = event.target;
+  const filterValue = searchInput.value.toLowerCase();
+
+  const activeFilters = [];
+  document.querySelectorAll('.all-selected-filter ul li').forEach(node => activeFilters.push(node.textContent));
+
+  if (filterValue.length >= 3 || activeFilters.length > 0) {
+    const filteredRecipes = recipes.filter(recipe => {
+      const titleMatch = recipe.name.toLowerCase().includes(filterValue);
+      const descriptionMatch = recipe.description.toLowerCase().includes(filterValue);
+
+      let ingredientsMatch = false;
+      recipe.ingredients.forEach(ingredient => {
+        if (ingredient.ingredient.toLowerCase().includes(filterValue)) {
+          ingredientsMatch = true;
+        }
+      });
+      
+      if (activeFilters.length > 0) {
+        for (const filter of activeFilters) {
+          if (!recipe.ingredients.find(ingredient => ingredient.ingredient === filter)) {
+            return false;
+          }
+        }
+      }
+
+      return titleMatch || descriptionMatch || ingredientsMatch;
+    });
+
+    createRecipeCards(filteredRecipes);
+  } else {
+    createRecipeCards(recipes);
+  }
+}
+
+const searchInputMain = document.querySelector('.search');
+searchInputMain.addEventListener('input', searchFilterMain);
+

@@ -32,9 +32,15 @@ export function filteredRecipes() {
         }
       }
 
+      const filterValue = document.querySelector('.search').value.toLowerCase();
+      if (filterValue.length >= 3 && !recipe.name.toLowerCase().includes(filterValue)) {
+        return false;
+      }
+
       return ingredientMatch || applianceMatch || utensilMatch;
     });
   }
 
   createRecipeCards(filteredRecipes);
 }
+
