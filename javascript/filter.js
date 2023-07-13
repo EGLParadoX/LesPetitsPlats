@@ -1,42 +1,40 @@
-import { recipes } from '../data/recipes.js'
-import { createRecipeCards } from './showData.js'
+import { recipes } from '../data/recipes.js';
+import { createRecipeCards } from './showData.js';
 
 export function filteredRecipes() {
-  console.log("passage")
   const activeFilters = [];
   document.querySelectorAll('.all-selected-filter ul li').forEach((node) => activeFilters.push(node.textContent));
-
 
   if (activeFilters.length === 0) {
     createRecipeCards(recipes);
     return;
   }
 
-  const callback = (recipe) => {
-    let ingredientMatch = false;
-    let applianceMatch = false;
-    let utensilMatch = false;
+  let filteredRecipes = recipes;
 
-    for (const filter of activeFilters) {
-      if (recipe.ingredients.find((ig) => ig.ingredient === filter)) {
+  for (const filter of activeFilters) {
+    filteredRecipes = filteredRecipes.filter((recipe) => {
+      let ingredientMatch = false;
+      let applianceMatch = false;
+      let utensilMatch = false;
+
+      if (!ingredientMatch && recipe.ingredients.find((ig) => ig.ingredient === filter)) {
         ingredientMatch = true;
       }
-      if (recipe.appliance === filter) {
+      if (!applianceMatch && recipe.appliance === filter) {
         applianceMatch = true;
       }
 
       for (const ustensil of recipe.ustensils) {
-        if (ustensil.toLowerCase() === filter.toLowerCase()) {
+        if (!utensilMatch && ustensil.toLowerCase() === filter.toLowerCase()) {
           utensilMatch = true;
           break;
         }
       }
-    }
-    
 
-    return ingredientMatch || applianceMatch || utensilMatch;
-  };
+      return ingredientMatch || applianceMatch || utensilMatch;
+    });
+  }
 
-  const filteredRecipes = recipes.filter(callback);
   createRecipeCards(filteredRecipes);
 }

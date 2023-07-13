@@ -1,34 +1,40 @@
-import { filteredRecipes } from "./filter.js"
+import { filteredRecipes } from "./filter.js";
 
 function removeSelectedFilter(li) {
-  const selectedFilterList = document.querySelector(".all-selected-filter ul");
-  const selectedTextElements = selectedFilterList.getElementsByTagName("li");
+  document.querySelectorAll(".all-selected-filter ul li").forEach((element) => {
+    if (element.textContent === li.textContent) element.remove();
+  });
 
-  for (let i = 0; i < selectedTextElements.length; i++) {
-    if (selectedTextElements[i].textContent === li.textContent) {
-      selectedTextElements[i].remove();
-      break;
-    }
+  document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li").forEach(resetFilterItem);
+
+  filteredRecipes();
+}
+
+function resetFilterItem(filter) {
+  filter.style.cssText = "";
+  filter.classList.remove("selected");
+  filter.addEventListener("click", itemClicked);
+
+  const crossIcon = filter.querySelector("i.fa-circle-xmark");
+  if (crossIcon) {
+    crossIcon.removeEventListener("click", crossIconClick);
+    crossIcon.remove();
   }
 }
 
 function crossIconClick(event) {
   event.stopPropagation();
 
-  const crossIcon = event.target;
-  const li = crossIcon.parentNode;
-  li.style.backgroundColor = "";
-  li.style.fontWeight = "";
-  li.removeChild(crossIcon);
-  li.style.cursor = "pointer";
-  li.addEventListener("click", itemClicked);
+  const li = event.target.closest("li");
+  li.style.cssText = "cursor: pointer";
+  li.removeChild(event.target);
+
+  document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li").forEach((item) => (item.style.cursor = "pointer"));
 
   removeSelectedFilter(li);
-  filteredRecipes();
 }
 
 function addSelectedFilter(liText) {
-  const selectedFilterList = document.querySelector(".all-selected-filter ul");
   const selectedTextElement = document.createElement("li");
   selectedTextElement.textContent = liText;
   selectedTextElement.classList.add("animation");
@@ -36,44 +42,48 @@ function addSelectedFilter(liText) {
   const crossIcon = document.createElement("i");
   crossIcon.style.cursor = "pointer";
   crossIcon.classList.add("fa-solid", "fa-times");
+  crossIcon.addEventListener("click", () => removeSelectedFilter(selectedTextElement));
 
   selectedTextElement.appendChild(crossIcon);
-  selectedFilterList.appendChild(selectedTextElement);
+  document.querySelector(".all-selected-filter ul").appendChild(selectedTextElement);
 
-  const selectedFilterContainer = document.querySelector(".all-selected-filter");
-  selectedFilterContainer.classList.add("animation");
-
-  crossIcon.addEventListener("click", crossIconClick);
+  document.querySelector(".all-selected-filter").classList.add("animation");
 
   filteredRecipes();
 }
+
 
 function itemClicked(event) {
   const li = event.target;
   const liText = li.textContent;
 
-  li.style.backgroundColor = "#FFD15B";
-  li.style.fontWeight = "bold";
+  if (!li.classList.contains("selected")) {
+    li.style.cssText = "background-color: #FFD15B; font-weight: bold; cursor: auto";
+    li.classList.add("selected");
+    li.removeEventListener("click", itemClicked);
 
-  const crossIcon = document.createElement("i");
-  crossIcon.style.cursor = "pointer";
-  crossIcon.classList.add("fa-solid", "fa-circle-xmark");
-  li.appendChild(crossIcon);
+    const crossIcon = document.createElement("i");
+    crossIcon.style.cursor = "pointer";
+    crossIcon.classList.add("fa-solid", "fa-circle-xmark");
+    crossIcon.addEventListener("click", crossIconClick);
 
-  crossIcon.addEventListener("click", crossIconClick);
-
-  li.removeEventListener("click", itemClicked);
-  li.style.cursor = "auto";
+    li.appendChild(crossIcon);
+  }
 
   addSelectedFilter(liText);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const allLi = document.querySelectorAll(
-    ".ingredientsList li, .appareilsList li, .ustensilesList li"
-  );
-
-  allLi.forEach((li) => {
+  document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li").forEach((li) => {
     li.addEventListener("click", itemClicked);
+    li.style.cursor = "pointer";
   });
 });
+
+
+
+
+
+
+
+

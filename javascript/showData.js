@@ -1,12 +1,17 @@
 import { recipes } from '../data/recipes.js'
 
-
-
 export function createRecipeCards(recipes) {
   const recipeContainer = document.getElementById('recipeContainer');
-  console.log("passage")
 
   recipeContainer.innerHTML = '';
+
+  if (recipes.length === 0) {
+    const recipeCountElement = document.getElementById('totalRecettes');
+    recipeCountElement.textContent = '0 recette';
+    recipeContainer.innerHTML = `<p class="no-result-card">Aucun résultat trouvé</p>`;
+    return;
+  }
+
 
   recipes.forEach(recipe => {
     const recipeCard = document.createElement('div');

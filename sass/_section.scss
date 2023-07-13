@@ -45,6 +45,13 @@ main {
             padding: 0;
             max-height: 300px;
             overflow-y: auto;
+            
+            .no-result-message 
+            {
+              &:hover {
+                background-color: white;
+              }
+            }
 
             li {
                 padding: 10px 20px 10px 20px;
@@ -202,4 +209,13 @@ main {
   
       
     }
+  }
+
+
+  .no-result-card {
+    font-size: 40px;
+    font-weight: 500;
+    color: #7A7A7A;
+    text-align: center;
+    width: 100%;
   }
