@@ -43,43 +43,85 @@ searchInputs.forEach(searchInput => {
   searchInput.addEventListener('input', searchFilter);
 });
 
+// Idée: avoir une seule fonction appellée quand un filtre change
+// ou quand l'input change
+// Cette fonction:
+// - filtre les recettes en fonction de l'input
+// - filtre les recettes en fonction des filtres actifs
+// - affiche les résultats
 
-function searchFilterMain(event) {
-  const searchInput = event.target;
+export function filteredRecipes() {
+  const activeFilters = [];
+  const filterItems = document.querySelectorAll(".ingredientsList li.selected, .appareilsList li.selected, .ustensilesList li.selected");
+
+  filterItems.forEach((filter) => {
+    activeFilters.push(filter.textContent.toLowerCase());
+  });
+
+  const searchInput = document.querySelector('.search');
   const filterValue = searchInput.value.toLowerCase();
 
-  const activeFilters = [];
-  document.querySelectorAll('.all-selected-filter ul li').forEach(node => activeFilters.push(node.textContent));
+  let filteredRecipes = recipes.filter(recipe => {
+    let ingredientMatch = true;
+    let applianceMatch = true; 
+    let utensilMatch = true;   
 
-  if (filterValue.length >= 3 || activeFilters.length > 0) {
-    const filteredRecipes = recipes.filter(recipe => {
-      const titleMatch = recipe.name.toLowerCase().includes(filterValue);
-      const descriptionMatch = recipe.description.toLowerCase().includes(filterValue);
-
-      let ingredientsMatch = false;
-      recipe.ingredients.forEach(ingredient => {
-        if (ingredient.ingredient.toLowerCase().includes(filterValue)) {
-          ingredientsMatch = true;
-        }
-      });
-      
-      if (activeFilters.length > 0) {
-        for (const filter of activeFilters) {
-          if (!recipe.ingredients.find(ingredient => ingredient.ingredient === filter)) {
-            return false;
-          }
-        }
+    recipe.ingredients.forEach(ingredient => {
+      if (ingredientMatch && ingredient.ingredient.toLowerCase().includes(filterValue)) {
+        ingredientMatch = true;
       }
-
-      return titleMatch || descriptionMatch || ingredientsMatch;
     });
 
-    createRecipeCards(filteredRecipes);
+    if (!applianceMatch && recipe.appliance.toLowerCase().includes(filterValue)) {
+      applianceMatch = true;
+    }
+
+    for (const ustensil of recipe.ustensils) {
+      if (utensilMatch && ustensil.toLowerCase().includes(filterValue)) {
+        utensilMatch = true;
+        break;
+      }
+    }
+
+    if (filterValue.length >= 3 && !(recipe.name.toLowerCase().includes(filterValue) || recipe.description.toLowerCase().includes(filterValue))) {
+      return false;
+    }
+
+    return ingredientMatch || applianceMatch || utensilMatch;
+  });
+
+  if (activeFilters.length > 0) {
+    filteredRecipes = filteredRecipes.filter(recipe => {
+      for (const filter of activeFilters) {
+        if (
+          !recipe.ingredients.find(ingredient => ingredient.ingredient.toLowerCase() === filter) &&
+          !recipe.appliance.toLowerCase().includes(filter) &&
+          !recipe.ustensils.find(ustensil => ustensil.toLowerCase().includes(filter))
+        ) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  createRecipeCards(filteredRecipes);
+
+  if (filterValue.length >= 3 || activeFilters.length > 0) {
+    console.log("Affichage recettes filtrées");
   } else {
-    createRecipeCards(recipes);
+    console.log("Affichage de toutes les recettes");
   }
 }
 
+
 const searchInputMain = document.querySelector('.search');
-searchInputMain.addEventListener('input', searchFilterMain);
+searchInputMain.addEventListener('input', filteredRecipes);
+
+
+
+
+
+
+
 

@@ -1,11 +1,18 @@
-import { filteredRecipes } from "./filter.js";
+import { filteredRecipes } from "./search.js";
 
 function removeSelectedFilter(li) {
   document.querySelectorAll(".all-selected-filter ul li").forEach((element) => {
-    if (element.textContent === li.textContent) element.remove();
+    if (element.textContent === li.textContent) {
+      element.remove();
+    }
   });
 
-  document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li").forEach(resetFilterItem);
+  const filterItems = document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li");
+  filterItems.forEach((filter) => {
+    if (filter.textContent === li.textContent) {
+      resetFilterItem(filter);
+    }
+  });
 
   filteredRecipes();
 }
@@ -20,16 +27,16 @@ function resetFilterItem(filter) {
     crossIcon.removeEventListener("click", crossIconClick);
     crossIcon.remove();
   }
+
 }
 
 function crossIconClick(event) {
   event.stopPropagation();
 
-  const li = event.target.closest("li");
+  const crossIcon = event.target;
+  const li = crossIcon.closest("li");
   li.style.cssText = "cursor: pointer";
-  li.removeChild(event.target);
-
-  document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li").forEach((item) => (item.style.cursor = "pointer"));
+  li.removeChild(crossIcon);
 
   removeSelectedFilter(li);
 }
@@ -52,7 +59,6 @@ function addSelectedFilter(liText) {
   filteredRecipes();
 }
 
-
 function itemClicked(event) {
   const li = event.target;
   const liText = li.textContent;
@@ -74,11 +80,13 @@ function itemClicked(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li").forEach((li) => {
-    li.addEventListener("click", itemClicked);
-    li.style.cursor = "pointer";
+  const filterItems = document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li");
+  filterItems.forEach((filter) => {
+    filter.addEventListener("click", itemClicked);
+    filter.style.cursor = "pointer";
   });
 });
+
 
 
 

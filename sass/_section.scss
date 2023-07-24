@@ -1,221 +1,221 @@
 main {
-    margin: 50px 120px;
-    position: relative;
-    
-    .total-filter{
-      display: flex;
-      justify-content: space-between;
-      position: absolute;
-      width: 100%;
-      
-      #totalRecettes{
-        font-family: 'Anton';
-        font-size: 30px;
-        align-self: center;
-        position: absolute;
-        right: 0;
-        top: 7px;
-      }
-    }
-        .filter
-    {
-        display: flex;
-        &-bar {
-            background-color: white;
-            width: 265px;
-            margin-right: 50px;
-            border-radius: 15px;
-            box-shadow: rgba(236, 239, 241, 0.14) 0px 8px 24px;
-            cursor: pointer;
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        &-name {
-            font-size: 20px;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            max-height: 300px;
-            overflow-y: auto;
-            
-            .no-result-message 
-            {
-              &:hover {
-                background-color: white;
-              }
-            }
-
-            li {
-                padding: 10px 20px 10px 20px;
-                transition: all 0.2s; 
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                cursor: pointer;
-
-                &:hover{
-                    background-color: #FFD15B;
-                }
-            }
-        }
-        &-container 
-        {
-          display: flex;
-          align-items: center;
-          position: relative;
-          padding: 0 20px;
-
-          .filter-search{
-            border: 1px solid #C6C6C6;
-            outline: none;
-            padding: 12px;
-            position: relative;
-            width: 100%;
-          }
+  margin: 50px 120px;
+  position: relative;
   
-          .fa-magnifying-glass {
-            position: absolute;
-            right: 30px;
-            color: #C6C6C6;
-            transition: color 0.3s;
-            
-            &:hover
-            {
-              color: black;
+  .total-filter{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    
+    #totalRecettes{
+      font-family: 'Anton';
+      font-size: 30px;
+      align-self: center;
+      position: absolute;
+      right: 0;
+      top: 7px;
+    }
+  }
+      .filter
+  {
+      display: flex;
+      &-bar {
+          background-color: white;
+          width: 265px;
+          margin-right: 50px;
+          border-radius: 15px;
+          box-shadow: rgba(236, 239, 241, 0.14) 0px 8px 24px;
+          cursor: pointer;
+          position: relative;
+
+          overflow: hidden;
+      }
+
+      &-name {
+          font-size: 20px;
+          padding: 0 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      ul {
+          list-style: none;
+          padding: 0;
+          max-height: 300px;
+          overflow-y: auto;
+          
+          .no-result-message 
+          {
+            &:hover {
+              background-color: white;
             }
           }
 
-        }
-        
+          li {
+              padding: 10px 20px 10px 20px;
+              transition: all 0.2s; 
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              cursor: pointer;
 
-    }
+              &:hover{
+                  background-color: #FFD15B;
+              }
+          }
+      }
+      &-container 
+      {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 0 20px;
+
+        .filter-search{
+          border: 1px solid #C6C6C6;
+          outline: none;
+          padding: 12px;
+          position: relative;
+          width: 100%;
+        }
+
+        .fa-magnifying-glass {
+          position: absolute;
+          right: 30px;
+          color: #C6C6C6;
+          transition: color 0.3s;
+          
+          &:hover
+          {
+            color: black;
+          }
+        }
+
+      }
+      
+
+  }
 
 }
 
 .all-selected-filter {
-  ul 
-  {
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 120px;
+ul 
+{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 120px;
 
-    li {
-      background-color: #FFD15B;
-      width: 265px;
-      border-radius: 15px;
-      font-size: 20px;
-      padding: 20px 30px;
-      margin: 10px 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  li {
+    background-color: #FFD15B;
+    width: 265px;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 20px 30px;
+    margin: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
+}
 }
 
 
 #recipeContainer {
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 20px;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  justify-content: space-between;
 
-    .time {
-      font-family: 'Manrope';
-      font-size: 20px;
-      padding: 7px 20px;
-      border-radius: 20px;
-      background-color: #FFD15B;
-      position: absolute;
-      top: 20px;
-      right: 20px;
+  .time {
+    font-family: 'Manrope';
+    font-size: 20px;
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color: #FFD15B;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .card {
+    flex-basis: calc(33.33% - 40px);
+    margin-bottom: 40px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    img {
+      border-radius: 20px 20px 0px 0px;
+      width: 100%;
+    height: 350px; 
+    object-fit: cover;
+    
     }
+
+    &-container{
+      padding: 30px;
+    
+        h3 {
+          font-size: 25px;
+          margin-top: 10px;
   
-    .card {
-      flex-basis: calc(33.33% - 40px);
-      margin-bottom: 40px;
-      border-radius: 20px;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: relative;
-
-      img {
-        border-radius: 20px 20px 0px 0px;
-        width: 100%;
-      height: 350px; 
-      object-fit: cover;
-      
-      }
-
-      &-container{
-        padding: 30px;
-      
-          h3 {
-            font-size: 25px;
-            margin-top: 10px;
+        }
+  
+        h4 
+         {
+          font-size: 20px;
+          color: #7A7A7A;
+          font-family: "Manrope";
+          margin-top: 20px;
+         }
+  
+        p {
+          font-size: 21.7px;
+          overflow: hidden;
+          height: 120px;
+        }
     
+        h4 {
+          font-size: 16px;
+          margin-top: 10px;
+        }
+    
+        ul {
+          margin-top: 5px;
+          padding-left: 20px;
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+
+          li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            width: 50%;
           }
-    
-          h4 
-           {
-            font-size: 20px;
+
+          .quantity 
+          {
             color: #7A7A7A;
-            font-family: "Manrope";
-            margin-top: 20px;
-           }
+          }
+        }
     
-          p {
-            font-size: 21.7px;
-            overflow: hidden;
-            height: 120px;
-          }
-      
-          h4 {
-            font-size: 16px;
-            margin-top: 10px;
-          }
-      
-          ul {
-            margin-top: 5px;
-            padding-left: 20px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-
-            li {
-              font-size: 18px;
-              margin-bottom: 10px;
-              padding-bottom: 10px;
-              width: 50%;
-            }
-
-            .quantity 
-            {
-              color: #7A7A7A;
-            }
-          }
-      
-      }
-
-      
-  
-      
     }
+
+    
+
+    
   }
+}
 
 
-  .no-result-card {
-    font-size: 40px;
-    font-weight: 500;
-    color: #7A7A7A;
-    text-align: center;
-    width: 100%;
-  }
+.no-result-card {
+  font-size: 40px;
+  font-weight: 500;
+  color: #7A7A7A;
+  text-align: center;
+  width: 100%;
+}

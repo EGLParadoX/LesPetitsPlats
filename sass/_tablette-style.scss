@@ -1,0 +1,46 @@
+/* stylesheets/tablet.scss */
+
+/* Tablet-specific styles */
+@media screen and (max-width: 1300px) {
+
+  header {
+
+      .header-image {
+        width: 140%;
+        margin-left: -30%;
+      }
+
+    nav {
+      a {
+        font-size: 25px;
+      }
+    }
+
+    h1 {
+      font-size: 40px;
+      width: 90%;
+    }
+
+    .title-and-input {
+      input {
+        height: 63px;
+        border-radius: 8px;
+        font-size: 18px;
+      }
+      .input-logo {
+        padding-top: 25px;
+      }
+      i 
+      {
+        font-size: 20px;
+        padding: 14px;
+      }
+    }
+  }
+  main {
+    margin: 50px 60px;
+  }
+
+  }
+        
+  
