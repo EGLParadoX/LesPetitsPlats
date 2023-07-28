@@ -43,13 +43,6 @@ searchInputs.forEach(searchInput => {
   searchInput.addEventListener('input', searchFilter);
 });
 
-// Idée: avoir une seule fonction appellée quand un filtre change
-// ou quand l'input change
-// Cette fonction:
-// - filtre les recettes en fonction de l'input
-// - filtre les recettes en fonction des filtres actifs
-// - affiche les résultats
-
 export function filteredRecipes() {
   const activeFilters = [];
   const filterItems = document.querySelectorAll(".ingredientsList li.selected, .appareilsList li.selected, .ustensilesList li.selected");
@@ -62,12 +55,12 @@ export function filteredRecipes() {
   const filterValue = searchInput.value.toLowerCase();
 
   let filteredRecipes = recipes.filter(recipe => {
-    let ingredientMatch = true;
-    let applianceMatch = true; 
-    let utensilMatch = true;   
+    let ingredientMatch = false;
+    let applianceMatch = false; 
+    let utensilMatch = false;   
 
     recipe.ingredients.forEach(ingredient => {
-      if (ingredientMatch && ingredient.ingredient.toLowerCase().includes(filterValue)) {
+      if (!ingredientMatch && ingredient.ingredient.toLowerCase().includes(filterValue)) {
         ingredientMatch = true;
       }
     });
@@ -76,16 +69,11 @@ export function filteredRecipes() {
       applianceMatch = true;
     }
 
-    for (const ustensil of recipe.ustensils) {
-      if (utensilMatch && ustensil.toLowerCase().includes(filterValue)) {
+    recipe.ustensils.forEach(ustensil => {
+      if (!utensilMatch && ustensil.toLowerCase().includes(filterValue)) {
         utensilMatch = true;
-        break;
       }
-    }
-
-    if (filterValue.length >= 3 && !(recipe.name.toLowerCase().includes(filterValue) || recipe.description.toLowerCase().includes(filterValue))) {
-      return false;
-    }
+    });
 
     return ingredientMatch || applianceMatch || utensilMatch;
   });
@@ -114,9 +102,11 @@ export function filteredRecipes() {
   }
 }
 
-
 const searchInputMain = document.querySelector('.search');
 searchInputMain.addEventListener('input', filteredRecipes);
+
+
+
 
 
 

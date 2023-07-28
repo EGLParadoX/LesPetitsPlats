@@ -53,7 +53,6 @@ export function createRecipeCards(recipes) {
 
 
 function showDataFilter() {
-
   const ingredientsContainer = document.querySelector('.ingredientsList');
   const uniqueIngredients = [];
 
@@ -74,16 +73,14 @@ function showDataFilter() {
   const uniqueAppareils = [];
 
   recipes.forEach(recipe => {
-      const lowerCaseAppliance = recipe.appliance.toLowerCase(); 
-      if (!uniqueAppareils.includes(lowerCaseAppliance)) {
-        uniqueAppareils.push(lowerCaseAppliance);
-        const li = document.createElement('li');
-        li.textContent = recipe.appliance;
-        appareilsContainer.appendChild(li);
-      }
-    });
-  }
-
+    const lowerCaseAppliance = recipe.appliance.toLowerCase(); 
+    if (!uniqueAppareils.includes(lowerCaseAppliance)) {
+      uniqueAppareils.push(lowerCaseAppliance);
+      const li = document.createElement('li');
+      li.textContent = recipe.appliance;
+      appareilsContainer.appendChild(li);
+    }
+  });
 
   const ustensilesContainer = document.querySelector('.ustensilesList');
   const uniqueUstensiles = [];
@@ -100,8 +97,7 @@ function showDataFilter() {
       }
     });
   });
-
-
+}
 
 showDataFilter();
 createRecipeCards(recipes);
