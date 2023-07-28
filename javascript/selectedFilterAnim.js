@@ -8,11 +8,12 @@ function removeSelectedFilter(li) {
   });
 
   const filterItems = document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li");
-  filterItems.forEach((filter) => {
+  for (let i = 0; i < filterItems.length; i++) {
+    const filter = filterItems[i];
     if (filter.textContent === li.textContent) {
       resetFilterItem(filter);
     }
-  });
+  }
 
   filteredRecipes();
 }
@@ -27,7 +28,6 @@ function resetFilterItem(filter) {
     crossIcon.removeEventListener("click", crossIconClick);
     crossIcon.remove();
   }
-
 }
 
 function crossIconClick(event) {
@@ -81,11 +81,13 @@ function itemClicked(event) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const filterItems = document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li");
-  filterItems.forEach((filter) => {
+  for (let i = 0; i < filterItems.length; i++) {
+    const filter = filterItems[i];
     filter.addEventListener("click", itemClicked);
     filter.style.cursor = "pointer";
-  });
+  }
 });
+
 
 
 
