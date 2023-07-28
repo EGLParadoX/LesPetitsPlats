@@ -12,52 +12,49 @@ export function createRecipeCards(recipes) {
     return;
   }
 
+  const recipeCountElement = document.getElementById('totalRecettes');
+  const recipeCount = recipes.length;
+  recipeCountElement.textContent = `${recipeCount} recettes`;
 
-  recipes.forEach(recipe => {
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
+
     const recipeCard = document.createElement('div');
     recipeCard.classList.add('card');
 
-    const ingredientsList = recipe.ingredients.map(ingredient => {
+    let ingredientsList = '';
+    for (let j = 0; j < recipe.ingredients.length; j++) {
+      const ingredient = recipe.ingredients[j];
       const quantity = ingredient.quantity ? `<span class="quantity">${ingredient.quantity} ${ingredient.unit || ''}</span>` : '';
-      return `<li>${ingredient.ingredient} <br> ${quantity}</li>`;
-    }).join('');
-
-    const recipeCountElement = document.getElementById('totalRecettes');
-    const recipeCount = recipes.length;
-    recipeCountElement.textContent = `${recipeCount} recettes`;
+      ingredientsList += `<li>${ingredient.ingredient} <br> ${quantity}</li>`;
+    }
 
     const recipeContent = `
       <img src="images/Photo/${recipe.image}" alt="${recipe.name}" />
       <div class="card-container">
         <div class="time">${recipe.time}min</div>
-        
         <h3>${recipe.name}</h3>
-
         <h4>RECETTE</h4>
-
         <p>${recipe.description}.</p>
-
         <h4>INGREDIENTS</h4>
-
         <ul>${ingredientsList}</ul>
-
       </div>
     `;
 
     recipeCard.innerHTML = recipeContent;
-
     recipeContainer.appendChild(recipeCard);
-  });
+  }
 }
-
-
 
 function showDataFilter() {
   const ingredientsContainer = document.querySelector('.ingredientsList');
   const uniqueIngredients = [];
 
-  recipes.forEach(recipe => {
-    recipe.ingredients.forEach(ingredient => {
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
+
+    for (let j = 0; j < recipe.ingredients.length; j++) {
+      const ingredient = recipe.ingredients[j];
       const lowerCaseIngredient = ingredient.ingredient.toLowerCase();
 
       if (!uniqueIngredients.includes(lowerCaseIngredient)) {
@@ -66,27 +63,32 @@ function showDataFilter() {
         li.textContent = ingredient.ingredient;
         ingredientsContainer.appendChild(li);
       }
-    });
-  });
+    }
+  }
 
   const appareilsContainer = document.querySelector('.appareilsList');
   const uniqueAppareils = [];
 
-  recipes.forEach(recipe => {
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
     const lowerCaseAppliance = recipe.appliance.toLowerCase(); 
+
     if (!uniqueAppareils.includes(lowerCaseAppliance)) {
       uniqueAppareils.push(lowerCaseAppliance);
       const li = document.createElement('li');
       li.textContent = recipe.appliance;
       appareilsContainer.appendChild(li);
     }
-  });
+  }
 
   const ustensilesContainer = document.querySelector('.ustensilesList');
   const uniqueUstensiles = [];
 
-  recipes.forEach(recipe => {
-    recipe.ustensils.forEach(ustensil => {
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
+
+    for (let j = 0; j < recipe.ustensils.length; j++) {
+      const ustensil = recipe.ustensils[j];
       const formattedUstensil = ustensil.charAt(0).toUpperCase() + ustensil.slice(1);
 
       if (!uniqueUstensiles.includes(formattedUstensil)) {
@@ -95,10 +97,11 @@ function showDataFilter() {
         li.textContent = formattedUstensil;
         ustensilesContainer.appendChild(li);
       }
-    });
-  });
+    }
+  }
 }
 
 showDataFilter();
 createRecipeCards(recipes);
+
 
