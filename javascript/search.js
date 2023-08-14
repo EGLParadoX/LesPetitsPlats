@@ -57,45 +57,38 @@ export function filteredRecipes() {
   const searchInput = document.querySelector('.search');
   const filterValue = searchInput.value.toLowerCase();
 
-  let filteredRecipes = recipes.filter(recipe => {
-    let ingredientMatch = false;
-    let applianceMatch = false;
-    let utensilMatch = false;
+  let filteredRecipes = [];
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
+    let matchesFilterValue = false;
 
-    for (let i = 0; i < recipe.ingredients.length; i++) {
-      const ingredient = recipe.ingredients[i];
-      if (!ingredientMatch && ingredient.ingredient.toLowerCase().includes(filterValue)) {
-        ingredientMatch = true;
+    if (
+      recipe.name.toLowerCase().includes(filterValue) ||
+      recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(filterValue)) ||
+      recipe.description.toLowerCase().includes(filterValue)
+    ) {
+      matchesFilterValue = true;
+    }
+
+    if (!matchesFilterValue) {
+      continue;
+    }
+
+    if (activeFilters.length > 0) {
+      const filterMatches = activeFilters.every(filter => {
+        return (
+          recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase() === filter) ||
+          recipe.appliance.toLowerCase().includes(filter) ||
+          recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(filter))
+        );
+      });
+
+      if (!filterMatches) {
+        continue;
       }
     }
 
-    if (!applianceMatch && recipe.appliance.toLowerCase().includes(filterValue)) {
-      applianceMatch = true;
-    }
-
-    for (let i = 0; i < recipe.ustensils.length; i++) {
-      const ustensil = recipe.ustensils[i];
-      if (!utensilMatch && ustensil.toLowerCase().includes(filterValue)) {
-        utensilMatch = true;
-      }
-    }
-
-    return ingredientMatch || applianceMatch || utensilMatch;
-  });
-
-  if (activeFilters.length > 0) {
-    filteredRecipes = filteredRecipes.filter(recipe => {
-      for (const filter of activeFilters) {
-        if (
-          !recipe.ingredients.find(ingredient => ingredient.ingredient.toLowerCase() === filter) &&
-          !recipe.appliance.toLowerCase().includes(filter) &&
-          !recipe.ustensils.find(ustensil => ustensil.toLowerCase().includes(filter))
-        ) {
-          return false;
-        }
-      }
-      return true;
-    });
+    filteredRecipes.push(recipe);
   }
 
   createRecipeCards(filteredRecipes);
@@ -109,6 +102,7 @@ export function filteredRecipes() {
 
 const searchInputMain = document.querySelector('.search');
 searchInputMain.addEventListener('input', filteredRecipes);
+
 
 
 
