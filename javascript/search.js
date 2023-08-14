@@ -61,9 +61,9 @@ export function filteredRecipes() {
     let matchesFilterValue = false;
 
     if (
-      recipe.name.toLowerCase().includes(filterValue) ||
+      (filterValue.length < 3 || recipe.name.toLowerCase().includes(filterValue) ||
       recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(filterValue)) ||
-      recipe.description.toLowerCase().includes(filterValue)
+      recipe.description.toLowerCase().includes(filterValue))
     ) {
       matchesFilterValue = true;
     }
@@ -100,4 +100,6 @@ export function filteredRecipes() {
 
 const searchInputMain = document.querySelector('.search');
 searchInputMain.addEventListener('input', filteredRecipes);
+
+
 
