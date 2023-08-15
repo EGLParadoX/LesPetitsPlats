@@ -17,8 +17,22 @@ export function createRecipeCards(recipes) {
     const recipeCount = recipes.length;
     recipeCountElement.textContent = `${recipeCount} recettes`;
 
+    const imageSource = `images/Photo/${recipe.image}`;
+    const image = new Image();
+    image.src = imageSource;
+
+    image.onerror = () => {
+      recipeCard.style.backgroundColor = 'white';
+    };
+
+    const imgElement = document.createElement('img');
+    imgElement.src = image.src;
+    imgElement.alt = recipe.name;
+
     const recipeContent = `
-      <img src="images/Photo/${recipe.image}" alt="${recipe.name}" />
+      <div class="image-container">
+        ${imgElement.outerHTML}
+      </div>
       <div class="card-container">
         <div class="time">${recipe.time}min</div>
         
