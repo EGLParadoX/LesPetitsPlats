@@ -1,5 +1,6 @@
 import { createRecipeCards } from "./showData.js";
 import { recipes } from '../data/recipes.js';
+import { showDataFilter } from "./showData.js";
 
 function searchFilter(event) {
   const searchInput = event.target;
@@ -89,13 +90,8 @@ export function filteredRecipes() {
     filteredRecipes.push(recipe);
   });
 
+  showDataFilter(filteredRecipes, activeFilters); 
   createRecipeCards(filteredRecipes);
-
-  if (filterValue.length >= 3 || activeFilters.length > 0) {
-    console.log("Affichage recettes filtrées");
-  } else {
-    console.log("Affichage de toutes les recettes");
-  }
 }
 
 const searchInputMain = document.querySelector('.search');

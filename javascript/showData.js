@@ -50,45 +50,44 @@ export function createRecipeCards(recipes) {
 
 
 
-function showDataFilter() {
+export function showDataFilter(filteredRecipesList) {
   const ingredientsContainer = document.querySelector('.ingredientsList');
+  const appareilsContainer = document.querySelector('.appareilsList');
+  const ustensilesContainer = document.querySelector('.ustensilesList');
+
+  // Réinitialisez les listes de filtres
+  ingredientsContainer.innerHTML = '';
+  appareilsContainer.innerHTML = '';
+  ustensilesContainer.innerHTML = '';
+
   const uniqueIngredients = [];
+  const uniqueAppareils = [];
+  const uniqueUstensiles = [];
 
-  recipes.forEach(recipe => {
+  filteredRecipesList.forEach(recipe => {
     recipe.ingredients.forEach(ingredient => {
-      const lowerCaseIngredient = ingredient.ingredient.toLowerCase();
-
-      if (!uniqueIngredients.includes(lowerCaseIngredient)) {
-        uniqueIngredients.push(lowerCaseIngredient);
+      const lowercaseIngredient = ingredient.ingredient.toLowerCase();
+      if (!uniqueIngredients.includes(lowercaseIngredient)) {
+        uniqueIngredients.push(lowercaseIngredient);
         const li = document.createElement('li');
         li.textContent = ingredient.ingredient;
         ingredientsContainer.appendChild(li);
       }
     });
-  });
 
-  const appareilsContainer = document.querySelector('.appareilsList');
-  const uniqueAppareils = [];
-
-  recipes.forEach(recipe => {
-    const lowerCaseAppliance = recipe.appliance.toLowerCase(); 
-    if (!uniqueAppareils.includes(lowerCaseAppliance)) {
-      uniqueAppareils.push(lowerCaseAppliance);
+    const lowercaseAppliance = recipe.appliance.toLowerCase();
+    if (!uniqueAppareils.includes(lowercaseAppliance)) {
+      uniqueAppareils.push(lowercaseAppliance);
       const li = document.createElement('li');
       li.textContent = recipe.appliance;
       appareilsContainer.appendChild(li);
     }
-  });
 
-  const ustensilesContainer = document.querySelector('.ustensilesList');
-  const uniqueUstensiles = [];
-
-  recipes.forEach(recipe => {
     recipe.ustensils.forEach(ustensil => {
-      const formattedUstensil = ustensil.charAt(0).toUpperCase() + ustensil.slice(1);
-
-      if (!uniqueUstensiles.includes(formattedUstensil)) {
-        uniqueUstensiles.push(formattedUstensil);
+      const lowercaseUstensil = ustensil.toLowerCase();
+      if (!uniqueUstensiles.includes(lowercaseUstensil)) {
+        uniqueUstensiles.push(lowercaseUstensil);
+        const formattedUstensil = ustensil.charAt(0).toUpperCase() + ustensil.slice(1);
         const li = document.createElement('li');
         li.textContent = formattedUstensil;
         ustensilesContainer.appendChild(li);
@@ -97,6 +96,5 @@ function showDataFilter() {
   });
 }
 
-showDataFilter();
+showDataFilter(recipes);
 createRecipeCards(recipes);
-
