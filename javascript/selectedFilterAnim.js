@@ -1,11 +1,13 @@
 import { filteredRecipes } from "./search.js";
 
 function removeSelectedFilter(li) {
-  document.querySelectorAll(".all-selected-filter ul li").forEach((element) => {
+  const elements = document.querySelectorAll(".all-selected-filter ul li");
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
     if (element.textContent === li.textContent) {
       element.remove();
     }
-  });
+  }
 
   const filterItems = document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li");
   for (let i = 0; i < filterItems.length; i++) {
