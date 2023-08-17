@@ -94,6 +94,3 @@ export function showDataFilter(filteredRecipesList) {
 
 showDataFilter(recipes);
 createRecipeCards(recipes);
-
-
-

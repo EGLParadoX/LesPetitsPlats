@@ -32,7 +32,7 @@ function resetFilterItem(filter) {
   }
 }
 
-function crossIconClick(event) {
+export function crossIconClick(event) {
   event.stopPropagation();
 
   const crossIcon = event.target;
@@ -61,7 +61,7 @@ function addSelectedFilter(liText) {
   filteredRecipes();
 }
 
-function itemClicked(event) {
+export function itemClicked(event) {
   const li = event.target;
   const liText = li.textContent;
 
