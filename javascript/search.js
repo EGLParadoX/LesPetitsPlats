@@ -68,7 +68,7 @@ export function filteredRecipes() {
       matchesFilterValue = true;
     }
 
-    if (!matchesFilterValue) {
+    if (!matchesFilterValue) { 
       return;
     }
 
