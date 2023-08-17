@@ -158,6 +158,3 @@ searchInputMain.addEventListener('input', filteredRecipes);
 
 
 
-
-
-

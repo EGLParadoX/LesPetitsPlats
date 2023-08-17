@@ -1,14 +1,15 @@
 import { filteredRecipes } from "./search.js";
 
 function removeSelectedFilter(li) {
-  document.querySelectorAll(".all-selected-filter ul li").forEach((element) => {
+  const elements = document.querySelectorAll(".all-selected-filter ul li");
+  elements.forEach(element => {
     if (element.textContent === li.textContent) {
       element.remove();
     }
   });
 
   const filterItems = document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li");
-  filterItems.forEach((filter) => {
+  filterItems.forEach(filter => {
     if (filter.textContent === li.textContent) {
       resetFilterItem(filter);
     }
@@ -27,10 +28,9 @@ function resetFilterItem(filter) {
     crossIcon.removeEventListener("click", crossIconClick);
     crossIcon.remove();
   }
-
 }
 
-function crossIconClick(event) {
+export function crossIconClick(event) {
   event.stopPropagation();
 
   const crossIcon = event.target;
@@ -59,7 +59,7 @@ function addSelectedFilter(liText) {
   filteredRecipes();
 }
 
-function itemClicked(event) {
+export function itemClicked(event) {
   const li = event.target;
   const liText = li.textContent;
 
@@ -81,11 +81,13 @@ function itemClicked(event) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const filterItems = document.querySelectorAll(".ingredientsList li, .appareilsList li, .ustensilesList li");
-  filterItems.forEach((filter) => {
+  filterItems.forEach(filter => {
     filter.addEventListener("click", itemClicked);
     filter.style.cursor = "pointer";
   });
 });
+
+
 
 
 
