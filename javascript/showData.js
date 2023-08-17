@@ -17,22 +17,8 @@ export function createRecipeCards(recipes) {
     const recipeCount = recipes.length;
     recipeCountElement.textContent = `${recipeCount} recettes`;
 
-    const imageSource = `images/Photo/${recipe.image}`;
-    const image = new Image();
-    image.src = imageSource;
-
-    image.onerror = () => {
-      recipeCard.style.backgroundColor = 'white';
-    };
-
-    const imgElement = document.createElement('img');
-    imgElement.src = image.src;
-    imgElement.alt = recipe.name;
-
     const recipeContent = `
-      <div class="image-container">
-        ${imgElement.outerHTML}
-      </div>
+      <img src="images/Photo/${recipe.image}" alt="${recipe.name}" />
       <div class="card-container">
         <div class="time">${recipe.time}min</div>
         
@@ -53,13 +39,6 @@ export function createRecipeCards(recipes) {
 
     recipeContainer.appendChild(recipeCard);
   });
-
-  if (recipes.length === 0) {
-    const recipeCountElement = document.getElementById('totalRecettes');
-    recipeCountElement.textContent = '0 recette';
-    recipeContainer.innerHTML = `<p class="no-result-card">Aucun résultat trouvé</p>`;
-    return;
-  }
 }
 
 
@@ -69,7 +48,7 @@ export function showDataFilter(filteredRecipesList) {
   const appareilsContainer = document.querySelector('.appareilsList');
   const ustensilesContainer = document.querySelector('.ustensilesList');
 
-  // Réinitialisez les listes de filtres
+ 
   ingredientsContainer.innerHTML = '';
   appareilsContainer.innerHTML = '';
   ustensilesContainer.innerHTML = '';
